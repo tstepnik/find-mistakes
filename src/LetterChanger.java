@@ -4,35 +4,33 @@ import java.util.Scanner;
 
 class LetterChanger {
     private static Scanner scanner = new Scanner(System.in);
-    private OperationsOnWords operations = new OperationsOnWords();
 
-    private final String COMMAND_TO_UPPER_CASE = "upper";
-    private final String COMMAND_TO_LOWER_CASE = "lower";
+    private final String UPPER_CASE = "upper";
+    private final String LOWER_CASE = "lower";
 
     private List<String> words = new ArrayList<>();
 
     public void addAndPrintWords() {
         addWords(getNumberOfWords());
-        String change = chooseOption();
-        switch (change) {
-            case COMMAND_TO_LOWER_CASE:
-                operations.changeWordsToLowerCase(words);
-                operations.printWords(words);
+        chooseOption();
+    }
+
+    private void chooseOption() {
+        System.out.println("Chcesz zamienić na małe (lower), czy wielkie litery (upper)?");
+        switch (scanner.nextLine()) {
+            case LOWER_CASE:
+                changeWordsToLowerCase(words);
+                printWords(words);
                 break;
-            case COMMAND_TO_UPPER_CASE:
-                operations.changeWordsToUpperCase(words);
-                operations.printWords(words);
+            case UPPER_CASE:
+                changeWordsToUpperCase(words);
+                printWords(words);
                 break;
             default:
                 System.out.println("Podałeś nieprawidłową komendę");
-                System.out.println("Małe wyrazy - " + COMMAND_TO_LOWER_CASE);
-                System.out.println("Duże wyrazy - " + COMMAND_TO_UPPER_CASE);
+                System.out.println("Małe wyrazy - " + LOWER_CASE);
+                System.out.println("Duże wyrazy - " + UPPER_CASE);
         }
-    }
-
-    private String chooseOption() {
-        System.out.println("Chcesz zamienić na małe (lower), czy wielkie litery (upper)?");
-        return scanner.nextLine();
     }
 
     private void addWords(int size) {
@@ -47,5 +45,17 @@ class LetterChanger {
         int wordsNumber = scanner.nextInt();
         scanner.nextLine();
         return wordsNumber;
+    }
+
+    private void printWords(List<String> words) {
+        words.forEach(System.out::println);
+    }
+
+    private void changeWordsToLowerCase(List<String> words) {
+        words.replaceAll(String::toLowerCase);
+    }
+
+    private void changeWordsToUpperCase(List<String> words) {
+        words.replaceAll(String::toUpperCase);
     }
 }
