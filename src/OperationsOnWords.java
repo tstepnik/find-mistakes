@@ -3,29 +3,16 @@ import java.util.List;
 
 public class OperationsOnWords {
 
-    private List<String> words = new ArrayList<>();
-
-    public List<String> getWords() {
-        return words;
-    }
-
-    public void setWords(List<String> words) {
-        this.words = words;
-    }
-
-    public void printWords() {
+    public void printWords(List<String> words) {
         words.forEach(System.out::println);
     }
 
-    public void changeWordsToLowerCase() {
+    public void changeWordsToLowerCase(List<String> words) {
         words.replaceAll(String::toLowerCase);
     }
 
-    public void changeWordsToUpperCase() {
+    public void changeWordsToUpperCase(List<String> words) {
         words.replaceAll(String::toUpperCase);
     }
 
-    public void addString(String word) {
-        words.add(word);
-    }
 }
