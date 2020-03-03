@@ -12,10 +12,10 @@ class LetterChanger {
 
     public void addAndPrintWords() {
         addWords(getNumberOfWords());
-        chooseOption();
+        transformText();
     }
 
-    private void chooseOption() {
+    private void transformText() {
         System.out.println("Chcesz zamienić na małe (lower), czy wielkie litery (upper)?");
         switch (scanner.nextLine()) {
             case LOWER_CASE:
